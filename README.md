@@ -19,13 +19,13 @@ Step-3 : Preprocessing the output - the labels provided in the output variable a
 
 Step-4 : Creating the model for classification - The CNN model utilises 5 different types of layers , namely "Conv2D","Flatten","Dropout","Dense","MaxPool2D". 
         
-        1) Conv2D - This is used for adding the convolutional layer in the model 
+1) Conv2D - This is used for adding the convolutional layer in the model 
+
+2) MaxPool2D - This defines a max pooling layer. Max pooling reduces the dimensionality of the data by taking             the maximum value from a specific window (2x2 in this case) and using that value to represent the entire                 window. This helps reduce computational cost and introduces some level of translation invariance (meaning                 the model is less sensitive to small shifts in the input).
         
-        2) MaxPool2D - This defines a max pooling layer. Max pooling reduces the dimensionality of the data by taking             the maximum value from a specific window (2x2 in this case) and using that value to represent the entire                 window. This helps reduce computational cost and introduces some level of translation invariance (meaning                 the model is less sensitive to small shifts in the input).
+3) Flatten - This layer flattens the multi-dimensional output of the convolutional layers into a one-                        dimensional vector. This is necessary because fully connected layers (next layers) typically                               require a flattened input.
         
-        3) Flatten - This layer flattens the multi-dimensional output of the convolutional layers into a one-                        dimensional vector. This is necessary because fully connected layers (next layers) typically                               require a flattened input.
-        
-        4) Dropout - This layer introduces Dropout, a regularization technique used to prevent overfitting. Dropout                 randomly sets a certain percentage (50% in this  case) of neurons to zero during training,                         forcing the network to learn more robust features that are not dependent on any specific neuron.
+4) Dropout - This layer introduces Dropout, a regularization technique used to prevent overfitting. Dropout                 randomly sets a certain percentage (50% in this  case) of neurons to zero during training,                         forcing the network to learn more robust features that are not dependent on any specific neuron.
 Step-5 : Compiling the model -  The model is combined with the help of Adam optimiser and utilies categorical crossentropy to determine loss.
 
 Step-6 : Callbacks - Used for validating the behaviour of our model. The "EarlyStopping" helps prevent overfitting . It monitors a specific metric (often validation loss) during training. If the monitored metric doesn't improve for a certain number of epochs (iterations over the training data), called patience, the callback stops the training process. This helps avoid overfitting by preventing the model from continuing to train on patterns that might not generalize well to new data. 
